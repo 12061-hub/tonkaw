@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ต้นข้าวค้าบบบบบ 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:linear-gradient(135deg,#ffb6c1,#ffe4ec);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    text-align:center;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:12px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#heartBtn{
+    background:#ff4d6d;
+    color:white;
+    font-size:22px;
+}
+
+#noBtn{
+    background:#ccc;
+    position:absolute;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:20px;
+    animation: floatUp 3s linear forwards;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-500px);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="box">
+    <h1>💌 เราไม่มีไรหรอกเเค่อยากบอกว่าาาา </h1>
+    <button id="heartBtn" onclick="startLove()">❤️</button>
+</div>
+
+<script>
+
+let noCount = 0;
+
+// หน้า 1 → กดหัวใจ
+function startLove(){
+    document.getElementById("box").innerHTML = `
+        <h1> คิดถึงต้นข้าววววจังเลยยยง่ะ</h1>
+        <p> ไม่โม้นะเว้ยยย 😳</p>
+        <button onclick="nextStep()">ต่อไป ➜</button>
+    `;
+
+    // เริ่มหัวใจลอย
+    setInterval(createHeart, 300);
+}
+
+// สร้างหัวใจลอย
+function createHeart(){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.top = "100vh";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),3000);
+}
+
+// ไปหน้าถามเป็นแฟน
+function nextStep(){
+    document.getElementById("box").innerHTML = `
+        <h1> ต้นข้าววคิดถึงเราม่ายยยย</h1>
+        <button onclick="yes()">ตกลง 💖</button>
+        <button id="noBtn" onmouseover="runAway()">ไม่ ❌</button>
+    `;
+}
+
+// ถ้ากดตกลง
+function yes(){
+    document.body.innerHTML = `
+        <h1 style="font-size:60px;color:#ff4d6d;text-align:center;">
+        ! เย่่รักต้นเข้วว💖🥰
+        </h1>
+    `;
+}
+
+// ปุ่มไม่วิ่งหนี (10 ครั้ง)
+function runAway(){
+    let btn = document.getElementById("noBtn");
+
+    if(noCount >= 10){
+        btn.style.position = "static";
+        btn.innerHTML = "เย่่่่่ รักต้นเข้วว 😳";
+        return;
+    }
+
+    btn.style.left = Math.random()*80 + "vw";
+    btn.style.top = Math.random()*80 + "vh";
+
+    noCount++;
+}
+
+</script>
+
+</<audio autoplay loop controls>
+    <source src="music/bgm.mp3" type="audio/mpeg">
+</audio>>
+</html>
